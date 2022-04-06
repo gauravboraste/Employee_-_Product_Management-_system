@@ -1,0 +1,41 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+
+
+    {% extends 'index.html' %}
+    {% block content %}
+
+    <div class="row">
+        <div  >
+   
+    
+    
+    <form method="POST" novalidate   >
+        {% csrf_token %}
+        <h4> Registation Page </h4>
+      
+  {{form.first_name}}
+        <input name="{{form.lat_name}}
+        <input name="{{form.username}}
+        <input name="{{form.email}}
+        <input name="{{form.password}}
+        <input name="{{form.is_superuser}}
+        <input type="submit" class="btn btn-success" value="Registation" >&nbsp;&nbsp;&nbsp;
+        If you have already Registation &nbsp;<a href="{%url 'login'%}">Login</a>
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</small>
+    {% endfor %}
+{% endif %}
+    </div>
+    </div>
+    {% endblock content %}
+
+</html> {% endcomment %}

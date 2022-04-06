@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+
+ <form method="POST"  novalidate style="margin-left: 350px;margin-right: 420px; margin-top: 90px;" >
+        {% csrf_token %}
+       <div class="row">
+    <div class="col-8"><h3>Add Category</h3></div>
+    <div class="col-4"><a href="{%url 'catshow'%}" class="btn btn-warning btn-sm" style="margin-left: 300px;">Category Data</a></div>
+  </div>
+        {{form.as_p}}
+         
+
+
+         {%  if request.user.is_superuser %}
+        <input type="submit" class="btn btn-success" value="Add Category" >
+        
+            {% else %}
+            <p><small>Only admin can Add Category</small></p>
+                  {% endif %}
+    </form>
+
+<br>
+
+  
+{% endblock content %}

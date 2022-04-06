@@ -1,0 +1,35 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Registation</title>
+</head>
+
+
+    {% extends 'index.html' %}
+    {% block content %}
+ {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</small>
+    {% endfor %}
+{% endif %}
+    <div >
+        
+   
+    <form method="POST" novalidate style="margin-left: 300px; margin-right: 280px; margin-top: 30px; height: 50px;" >
+        {% csrf_token %}
+        <h4> Product Page </h4>
+        {{form.as_p}}
+        <input type="submit" class="btn btn-success" value="Registation" >&nbsp;&nbsp;&nbsp;
+        <br>
+       
+    </form>
+   
+    </div>
+    
+    {% endblock content %}
+
+</html> 

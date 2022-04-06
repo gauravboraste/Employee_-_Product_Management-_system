@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+
+ 
+
+<br>
+  <h2>Contact Data</h2>
+   <div style="margin-right:355px">
+        <table style="width:120%; background-color: #BDC3C7 ;" class="table table-bordered table-sm ">
+
+
+        
+             <thead class="thead-dark">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+              
+                            
+            </tr>
+            {% for data in dat %}
+            <tr>
+               
+                <td>{{data.id}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.message}}</td>
+                
+               
+
+              
+               
+
+               
+                
+                       </tr>
+                        {% endfor %}
+        
+                        
+
+                       </table>
+                       
+</div>
+    
+
+
+
+
+
+
+{% endblock content %}

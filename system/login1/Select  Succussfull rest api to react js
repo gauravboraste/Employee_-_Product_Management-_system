@@ -1,0 +1,54 @@
+import React from 'react';
+
+
+
+class Select extends React.Component {
+  state = {
+      values: [],
+      selectedTeam: ""
+  }
+  
+  componentDidMount() {
+     fetch('http://127.0.0.1:8000/list/')
+      .then(function(res) {
+          return res.json();
+      }).then((json)=> {
+          this.setState({
+             values: json
+          })
+          console.log(this.state.selectedTeam)
+      });
+  }
+
+  inputChange = (event)=>{
+    
+    
+    this.setState({selectedTeam:event.target.value});
+    console.log(event.target.value)
+  }
+ 
+  render(){
+      return <div className="drop-down">
+         <div className="row">
+        <div className="col-md-12 offset-md-2 my-5">
+        
+            <select className="custom-select" value={this.state.selectedTeam}
+               onChange={this.inputChange} >
+                {
+               this.state.values.map((obj) => {
+                   return <option value={obj.id}>{obj.name}</option>
+                 
+               })
+               
+            }
+           
+            </select>
+          
+          </div>
+          </div>
+          </div>
+  }
+}
+
+
+export default Select

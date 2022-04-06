@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<form style="margin-left:20px; margin-top: 80px;"  >
+      
+      {% if dat %}
+       <form method="POST" action="/logoutuser/" >
+    {% csrf_token %}
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+       
+       <ul class="nav d-flex justify-content-between">
+        <li class="nav-item">
+            <h3 class="info"> Employee Data</h3>
+        </li>
+         <li>
+         <input  type="text" name="q" placeholder="Search" aria-label="Search">&nbsp;&nbsp;<button class="btn btn-outline-success" type="submit">Search</button>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'export-excel' %}" class="btn btn-secondary btn-sm" style="margin-right: 26px;">Export</a>
+        </li>
+        {% comment %} <li class="nav-item">
+         <a href="{%url 'showdata'%}" class="btn btn-secondary btn-sm"  style="margin-right: 26px;">Show Data</a>
+        </li>  {% endcomment %}
+      </ul>
+      </form>
+    <div style="margin-right:195px">
+        <table style="width:120%; background-color: #BDC3C7 ;" class="table table-bordered table-sm ">
+
+
+        
+             <thead class="thead-dark">
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Permission</th>
+                <th>Action</th>
+                            
+            </tr>
+            {% for data in dat %}
+            <tr>
+                <td scope="row"> {{data.id}}</td>
+                <td>{{data.first_name}}</td>
+                <td>{{data.last_name}}</td>
+                <td>{{data.username}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.is_superuser}}
+                 <td>
+                    {%  if request.user.is_superuser %}
+                  <a href="{% url 'update-data' data.id %}" class="btn btn-warning btn-sm">Edit</a>
+                   
+                  <a href="{% url 'delete_items' data.id %}"class="btn btn-danger btn-sm">Delete</a>
+                  </td>
+                  {% else %}
+                  <p><small>Only admin can Use Edit & Delete button </small></p>
+                  {% endif %}
+                       </tr>
+                          {% endfor %}
+        
+                         {% else %}
+     
+                          {% endif %}
+
+                       </table>
+                       
+</div>
+                      
+       
+      
+
+
+   
+</form>
+{% endblock %}

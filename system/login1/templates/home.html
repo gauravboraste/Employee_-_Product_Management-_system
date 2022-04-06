@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <h4> home page page</h4>
+    <div class="alert alert-primary" role="alert">
+        <a href="{%url 'register'%}" class="btn btn-primary btn-lg disabled" style="padding-left: 80px;">Register</a> <a href="{%url 'login'%}"  class="btn btn-primary btn-lg disabled" style="padding-left: 80px;">Login</a>
+       
+        
+        </div>
+    {% endblock content %}
+    
+</body>
+</html>

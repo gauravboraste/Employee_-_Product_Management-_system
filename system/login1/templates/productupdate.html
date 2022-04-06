@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block content %}
+  
+    <form method="POST" >
+        {% csrf_token %}
+      {{form.as_p}}
+  
+ {% comment %} <div style="margin-left: 200px;margin-right: 500px;">
+            <div class="mb-3">
+              <legend>Edit Data</legend>
+              <br>
+              <label for="exampleInputUsername" class="form-label"> PID</label>
+              <input type="text" class="form-control" value="{{ form.pid}}" name="pid" >
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Product Name</label>
+              <input type="text" class="form-control" value="{{ form.product_name}}"  name="product_name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Product brand</label>
+                <input type="text" class="form-control" value="{{ form.product_brand}}"  name="product_brand">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Serial No</label>
+                <input type="text" class="form-control" value="{{ form.serial_no}}" name="serial_no">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Model no</label>
+                <input type="text" class="form-control" value="{{ form.model_no}}"  name="model_no">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Description</label>
+                <input type="text" class="form-control" value="{{ form.description}}"  name="description">
+              </div>
+               <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Category</label>
+                <input type="text" class="form-control" value="{{ form.category}}"  name="category">
+              </div>
+              <br>  {% endcomment %}
+              <input type="submit" class="btn btn-primary" value="Update">
+            
+          </form>
+     {% endblock content %}
+</body>
+</html>
+
+

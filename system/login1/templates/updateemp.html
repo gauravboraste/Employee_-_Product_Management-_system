@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block content %}
+  
+    <form method="POST" >
+        {% csrf_token %}
+        <div style="margin-left: 200px;margin-right: 500px;">
+            <div class="mb-3">
+              <legend>Edit Data</legend>
+              <br>
+              <label for="exampleInputUsername" class="form-label"> First Name</label>
+              <input type="text" class="form-control" value="{{ form.first_name}}" name="first_name" >
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Last Name</label>
+              <input type="text" class="form-control" value="{{ form.last_name}}"  name="last_name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Username</label>
+                <input type="text" class="form-control" value="{{ form.username}}"  name="username">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Email</label>
+                <input type="text" class="form-control" value="{{ form.email}}" name="email">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" value="{{ form.password}}"  name="password">
+              </div>
+              <br>
+              <input type="submit" class="btn btn-primary" value="Update">
+            
+          </form>
+     {% endblock content %}
+</body>
+</html>
+
+

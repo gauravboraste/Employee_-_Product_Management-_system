@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+    {% block content %}
+<form method="post" action=""   style="margin-top: 150px; margin-left: 230px; " class="info" >
+   {% csrf_token %}
+ <div class="container">
+   <div style="background-color:rgb(187, 21, 21);color: seashell; margin-right: 170px;" >
+    <div></div>
+    <br>
+     <h4 style="text-align: center;">Are you sure you want to delete?</h4><br>
+      <div style="text-align: center;">
+        <h5>Category= {{delete.category}}</h5>
+     <input class="btn btn-danger btn-sm" type="submit" value="Yes" />
+     <a href="/productdatashow"><div class="btn btn-success btn-sm">Cancel</div></a>
+    </div>
+     <br>
+    </div>
+    </div>
+</div>
+</form>
+   {% endblock content %}

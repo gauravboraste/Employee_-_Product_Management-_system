@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block content %}
+<form method="post" action=""   style="margin-top: 150px; margin-left: 230px; " class="info" >
+   {% csrf_token %}
+ <div class="container">
+   <div style="background-color:rgb(187, 21, 21);color: seashell; margin-right: 170px;" >
+    <div></div>
+    <br>
+     <h4 style="text-align: center;">Are you sure you want to delete?</h4><br>
+            
+      <div style="text-align: center;">
+      <h5> Username = {{ data.username}}</h5>
+     <input class="btn btn-danger btn-sm" type="submit" value="Yes" />
+     <a href="/showdata"><div class="btn btn-success btn-sm">Cancel</div></a>
+    </div>
+     <br>
+    </div>
+    </div>
+</div>
+</form>
+   {% endblock content %}
+</body>
+</html>

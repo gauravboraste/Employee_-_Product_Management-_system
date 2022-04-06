@@ -1,0 +1,262 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block css %}
+ <!-- Custom fonts for this template-->
+    <link href="{% static 'test1/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'test1/css/sb-admin-2.min.css'%}" rel="stylesheet">
+{% endblock css %}
+
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+
+  {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</small>
+    {% endfor %}
+{% endif %}
+ 
+ {% for error in form.errors %}
+          
+         
+         
+          {% endfor %} 
+
+
+
+<form action="{%url 'registers'%}" method="POST"   novalidate style="width: 1000px; margin-left: 50px; margin-top: 70px;" >
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-8"><h3>Registation</h3></div>
+    <div class="col-4"><a href="{%url 'showdata'%}" class="btn btn-warning btn-sm" style="margin-left: 200px;">Employee Data</a></div>
+  </div>
+  
+ {% comment %} <div class="inlines">
+
+<h3>Registation</h3> <a href="{%url 'showdata'%}" class="btn btn-warning btn-sm" style="margin-left: 500px;">Employee Data</a>
+
+</div>  {% endcomment %}
+
+
+  <div class="form-group row">
+   
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user"    
+        placeholder="First Name" name="first_name" >
+         <font  color="red"> {{ form.first_name.errors }} </font><br>
+
+    </div>
+    <div class="col-sm-6">
+        <input type="text" class="form-control form-control-user"
+            placeholder="Last Name"  name="last_name" >
+             <font  color="red"> {{ form.last_name.errors }} </font><br>
+    </div>
+</div>
+<div class="form-group" ">
+    <input type="text" class="form-control form-control-user" 
+        placeholder="Email Address"  name="email">
+         <font  color="red"> {{ form.email.errors }} </font><br>
+</div>
+<div class="form-group row"  >
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <input type="text" class="form-control form-control-user"
+            placeholder="username" name="username" >
+             <font  color="red"> {{ form.username.errors }} </font><br>
+            <br>
+            
+        <div class="col-sm-3" style="width: 40px;" >
+       <input type="checkbox" class="form-control form-control-user" name="is_superuser"> Admin Permission
+    </div>     
+    </div>
+    <div class="col-sm-6">
+        <input type="password" class="form-control form-control-user"
+             placeholder="Repeat Password" name="password">
+              <font  color="red"> {{ form.password.errors }} </font><br>
+    
+  
+   
+     
+</div>
+
+<input type="submit"  class="btn btn-primary btn-user btn-block" value="Registation" >
+<br>
+ 
+</form>
+
+<div style="text-align: center; margin-left: 425px; margin-top: 20px;">
+  <div class="text-center" >
+                                <a class="small" href="#">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'login'%}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+{% comment %} <!-- <br>
+<br>
+
+
+
+<br><br>
+
+
+     
+    <!-- <h1>---------------------------------------------------------------------------------------------------------</h1> -->
+
+        <table  class="table table-bordered table-sm table-success"  >
+
+
+        
+            
+                <th>UID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Permission</th>
+                <!-- <th>Action</th> -->
+                            
+            </tr>
+            {% for data in dat %}
+            <tr>
+                <td scope="row"> {{data.id}}</td>
+                <td>{{data.first_name}}</td>
+                <td>{{data.last_name}}</td>
+                <td>{{data.username}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.is_superuser}}
+                 <!-- <td>
+                  <a href="{% url 'update-data' data.id %}" class="btn btn-warning btn-sm">Edit</a>
+                   
+                  <a href="{% url 'delete_items' data.id %}"class="btn btn-danger btn-sm">Delete</a>
+                  </td> -->
+
+                       </tr>
+                          {% endfor %}
+        
+                         
+
+                       </table> --> {% endcomment %}
+                       
+  
+               
+   
+
+  {% endblock content %}
+
+
+    {% block scripts %}
+      <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'test1/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'test1/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'test1/vendor/jquery-easing/jquery.easing.min.js'%}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'test1/js/sb-admin-2.min.js'%}"></script>
+    {% endblock scripts %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'index.html' %}
+{% block content %}
+
+  {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</small>
+    {% endfor %}
+{% endif %}
+
+<body class="bg-gradient-primary">
+
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form  method="POST" class="user">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"    
+                                        placeholder="First Name" id="{{form.first_name.value}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                            placeholder="Last Name" id="{{form.last_name.value}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" 
+                                        placeholder="Email Address" id="{{form.email.value}}" >
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                            placeholder="username" id="{{form.username.value}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                             placeholder="Repeat Password" id="{{form.password.value}}">
+                                    </div>
+                                </div>
+                                <input type="submit"  class="btn btn-primary btn-user btn-block" value="Registation" >&nbsp;&nbsp;&nbsp;
+                                
+                               
+                            </form>
+                         
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+{% endblock content %}
+</html> {% endcomment %}

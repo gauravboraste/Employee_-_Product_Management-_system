@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+
+ 
+
+<br>
+  <h2>SubCategory Data</h2>
+   <div style="margin-right:355px">
+        <table style="width:120%; background-color: #BDC3C7 ;" class="table table-bordered table-sm ">
+
+
+        
+             <thead class="thead-dark">
+                <th>ID</th>
+                <th>Category</th>
+                <th>SubCategory</th>
+                <th>Action</th>
+              
+                            
+            </tr>
+            {% for data in dat %}
+            <tr>
+               
+                <td>{{data.id}}</td>
+                <td>{{data.category}}</td>
+                <td>{{data.subcategory}}</td>
+                <td>
+
+                
+                  {%  if request.user.is_superuser %}
+                
+                 <a href="{% url 'subcat_delete' data.id %}" class="btn btn-danger btn-sm">Delete</a> 
+  
+                 {% comment %} <a href="{% url 'productupdate' data.id %}" class="btn btn-warning btn-sm">Edit</a>  {% endcomment %}
+                 {% else %}
+                 <p><small>Only admin can Use Edit & Delete button </small></p>
+                          {% endif %}
+                 
+                
+                </td>
+               
+
+              
+               
+
+               
+                
+                       </tr>
+                        {% endfor %}
+        
+                        
+
+                       </table>
+                       
+</div>
+{% endblock content %}

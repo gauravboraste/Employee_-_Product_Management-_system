@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+{% extends 'index.html' %}
+    {% block content %}
+     {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} 
+   
+    {% comment %} <form method="POST" action="/logoutuser/" >
+    {% csrf_token %}
+    
+    <br>
+      
+ 
+           <input type="submit" class="btn btn-success" value="Save" > 
+        <a href="{% url 'export-excel' %}" class="btn btn-secondary btn-sm">Export</a>
+
+        <a href="{%url 'showdata'%}" class="btn btn-secondary btn-sm" >Show Data</a>
+        
+    </form> {% endcomment %}
+    {% comment %} <input type="submit"   class="btn btn-outline-danger btn-sm" value="Logout" style="margin-left: 1040px; margin-top: -640px;" > {% endcomment %}
+   
+<form style="margin-left:20px" >
+      
+      {% if dat %}
+       <form method="POST" action="/logoutuser/" >
+    {% csrf_token %}
+       
+       <ul class="nav d-flex justify-content-between">
+        <li class="nav-item">
+            <h3 class="info"> Employee Data</h3>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'export-excel' %}" class="btn btn-secondary btn-sm" style="margin-left: 670px;">Export</a>
+        </li>
+        <li class="nav-item">
+         <a href="{%url 'showdata'%}" class="btn btn-secondary btn-sm"  style="margin-right: 26px;">Show Data</a>
+        </li> 
+      </ul>
+      </form>
+    <div style="margin-right:195px">
+        <table style="width:120%" class="table table-bordered table-sm table-success">
+
+
+        
+            
+                <th>UID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Permission</th>
+                <th>Action</th>
+                            
+            </tr>
+            {% for data in dat %}
+            <tr>
+                <td scope="row"> {{data.id}}</td>
+                <td>{{data.first_name}}</td>
+                <td>{{data.last_name}}</td>
+                <td>{{data.username}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.is_superuser}}
+                 <td>
+                  <a href="{% url 'update-data' data.id %}" class="btn btn-warning btn-sm">Edit</a>
+                   
+                  <a href="{% url 'delete_items' data.id %}"class="btn btn-danger btn-sm">Delete</a>
+                  </td>
+
+              
+               
+
+               
+                
+                       </tr>
+                        {% endfor %}
+        
+                         {% else %}
+     
+                          {% endif %}
+
+                       </table>
+                       
+</div>
+                      
+       
+      
+
+
+   {% endblock content %}
+</form>
+</body>
+</html>
+
+

@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+    {% block content %}
+
+    {%  if request.user.is_superuser %}
+                
+    <a href="{% url 'contactusshow' %}" class="btn btn-danger btn-sm">Check</a> 
+
+   
+    {% else %}
+    
+             {% endif %}
+  <div >
+    <div class="container" >
+      <div class="row">
+        <div class="col">
+         <form  class="alert alert-secondar" style="margin-top: 150px; border: 1px solid black;" > 
+           <h4>Website:-www.gaurav.com</h4>
+          <h4>Email:-gaurav@gmail.com</h4>
+          <h4>Mobail:-9876543210</h4>
+          <h4>Factory : Gat No. 314/1 & 314/2, A/P Mohadi,Tal. Dindori, Nashik - 422207, Maharashtra, India.
+            Phone : 1800 212 002 020
+            Email : info@sahyadrifarms.com</h4>
+
+          
+
+           </form>
+        </div>
+        <div class="col" >
+        <form style=" margin-left: 70px; margin-top: 10px; " method="POST">
+          {% csrf_token %}
+          <h3>Contact</h3>
+
+          {{form.as_p}}
+          <input type="submit" class="btn btn-success btn-sm" value="Submit">
+        </form>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}

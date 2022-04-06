@@ -1,0 +1,10 @@
+
+    {% block content %}
+         <select name="category" class="form-control">
+   {% for results in cate %}
+            <option value="{{ results.id}}">{{ results.name}}</option>
+   {% endfor %}
+         </select>
+
+
+     {% endblock content %}
